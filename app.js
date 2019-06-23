@@ -21,6 +21,24 @@ var recipes = [
     }
 ]
 
+filters = {
+    searchText: ''
+}
+
 $.each(recipes, function (index, value) {
     $(".recipes").append("<p>"+value.name+"</p>");
+})
+
+$("#searchRecipe").on("input", function (event) {
+    filters.searchText = $(this).val();
+
+    var filteredRecipes = $.grep(recipes, function (object) {
+        return object.name.toLowerCase().includes(filters.searchText.toLowerCase());
+    })
+
+    $(".recipes").empty();
+
+    $.each(filteredRecipes, function (index, value) {
+        $(".recipes").append("<p>"+value.name+"</p>");
+    })
 })
