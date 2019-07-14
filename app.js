@@ -26,6 +26,7 @@ function renderRecipes(recipes, filters) {
 
 $('#add-recipe').click(function () {
     recipes.push({
+        id: uuidv4(),
         name: 'Chicken biryani',
         description: 'some text'
     })
